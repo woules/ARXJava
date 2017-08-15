@@ -89,7 +89,7 @@ public class AdatbGUI extends JFrame {
 	                "Evjarat",
 	                "Motorkod",
 	                "Alvazszam",
-	                "Motorszám",
+	                "cm3",
 	                "Vevõkód"};
 			
 			addWindowListener(new WindowAdapter() {

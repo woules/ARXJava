@@ -35,7 +35,7 @@ public class GUI extends JFrame {
 	private static String[][] db = new String [9][1000];
 	static String keszfile;
 	private static final long serialVersionUID = 1L;
-private static String[] s = new String[150];
+	private static String[] s = new String[150];
 	
 	
 	private static TextField nev = new TextField();
