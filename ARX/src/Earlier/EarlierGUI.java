@@ -11,6 +11,11 @@ import adatb.AdatbGUI;
 
 public class EarlierGUI extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4071038783002729652L;
+
 	private JPanel contentPane;
 
 	private static int a=-1;
