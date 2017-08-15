@@ -11,6 +11,7 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 import adatb.AdatbGUI;
 import adatb.db_lista;
+import Earlier.JSon;
 
 import javax.swing.JButton;
 import java.awt.Label;
@@ -27,6 +28,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 import java.awt.Font;
 import java.awt.event.FocusAdapter;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 public class GUI extends JFrame {
 /**
 	 * 
@@ -52,7 +55,7 @@ public class GUI extends JFrame {
 	protected JPanel contentPane;
 	private Label label_20;
 	private int eKesz;
-
+	String indes=index.getI();
 	/**
 	 * Launch the application.
 	 */
@@ -952,15 +955,9 @@ public class GUI extends JFrame {
 			//	System.out.println(s[40]);
 			//	s[19]=molajcsere.isSelected();
 				//s[20]
-				//s[21]
-				 keszfile = index.getI();
-				//másolat:
-				try {
-					one.Copy.copyFile(keszfile);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			
+				//s[21]	
+				keszfile = index.getI();
+				
 				if (keresett[0]==null) {
 					String[] irni=new String[11];
 					irni[1]= nev.getText();
@@ -975,31 +972,23 @@ public class GUI extends JFrame {
 					irni[10]= hengeru.getText();
 					adatb.dbir.db_ir(irni);
 				}
-				//filebairas
+				 
+				//JSON Store data w/ index
+				
+				JSon execJS = new JSon(s);
 				try {
-					eKesz = ODT.output(keszfile);
-
-				//	indexSetI.setI();	// léptetni az indexet.
-				} catch (EncryptedDocumentException | InvalidFormatException | IOException e2) {
-					
-				}
-				//nyomtatas:
-				if( eKesz==1 )  
-					elkeszult.ePopup(keszfile);
-				
-				
-				//nyomtatas
-			/*	try {
-					Print.p(keszfile);
+					execJS.JStore();
 				} catch (IOException e1) {
+					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				}   */
-				String asd=index.getI();
-				sorszam.setText("sorsz\u00E1m:  "+asd);
+				}
+				
+				indes=index.getI();
+				sorszam.setText("sorsz\u00E1m:  "+indes);
 			}
 		});
 		
-		Kesz.setBounds(505, 354, 89, 22);
+		Kesz.setBounds(447, 354, 89, 22);
 		contentPane.add(Kesz);
 		
 		Label label_43 = new Label("Alv\u00E1zsz\u00E1m");
@@ -1023,6 +1012,159 @@ public class GUI extends JFrame {
 		
 		nevsor.setBounds(433, 60, 139, 23);
 		contentPane.add(nevsor);
+		
+		JButton megnyitas = new JButton("Megnyit\u00E1s");
+		megnyitas.setBounds(344, 354, 97, 23);
+		contentPane.add(megnyitas);
+		
+		JButton nyomtatas = new JButton("Nyomtat\u00E1s");
+		nyomtatas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				s[0]=nev.getText();
+				s[1]=cim.getText();
+				s[2]=Telefon.getText();
+				s[3]=vevokod.getText();
+				s[4]=Rendszam.getText();
+				s[5]=Tipus.getText();
+				s[6]=evjarat.getText();
+				s[7]=Motorszam.getText();
+				s[8]=hengeru.getText();
+				s[9]=kmO.getText();
+				s[10]=Molaj.getText();
+				s[11]=hajtmuolaj.getText();
+				s[12]=szuro.getText();
+				s[13]=meg_date.getText();
+				s[14]=kezd_date.getText();
+				s[15]=elkesz_v_date.getText();
+				s[16]=jav_kolt.getText();
+				s[17]=elkesz_date.getText();
+				s[18]=fizmod.getSelectedItem();
+				s[36]=uamenny.getText();
+				s[37]=huto.getText();
+				//megr
+				s[38]=meg1.getText();
+				s[39]=meg2.getText();
+				s[40]=meg3.getText();
+				s[41]=meg4.getText();
+				s[42]=meg5.getText();
+				s[43]=meg6.getText();
+				s[44]=meg7.getText();
+				s[45]=meg8.getText();
+				s[46]=meg9.getText();
+				s[47]=meg10.getText();
+		//		//rendben
+				s[48]=Boolean.toString(rendben_1.isSelected());
+				s[49]=Boolean.toString(rendben_2.isSelected());
+				s[50]=Boolean.toString(rendben_3.isSelected());
+				s[51]=Boolean.toString(rendben_4.isSelected());
+				s[52]=Boolean.toString(rendben_5.isSelected());
+				s[53]=Boolean.toString(rendben_6.isSelected());
+				s[54]=Boolean.toString(rendben_7.isSelected());
+				s[55]=Boolean.toString(rendben_8.isSelected());
+				s[56]=Boolean.toString(rendben_9.isSelected());
+				s[57]=Boolean.toString(rendben_10.isSelected());
+				// hiba
+				s[58]=Boolean.toString(hiba_1.isSelected());
+				s[59]=Boolean.toString(hiba_2.isSelected());
+				s[60]=Boolean.toString(hiba_3.isSelected());
+				s[61]=Boolean.toString(hiba_4.isSelected());
+				s[62]=Boolean.toString(hiba_5.isSelected());
+				s[63]=Boolean.toString(hiba_6.isSelected());
+				s[64]=Boolean.toString(hiba_7.isSelected());
+				s[65]=Boolean.toString(hiba_8.isSelected());
+				s[66]=Boolean.toString(hiba_9.isSelected());
+				s[67]=Boolean.toString(hiba_10.isSelected());
+				//javitva
+				s[68]=Boolean.toString(jav_1.isSelected());
+				s[69]=Boolean.toString(jav_2.isSelected());
+				s[70]=Boolean.toString(jav_3.isSelected());
+				s[71]=Boolean.toString(jav_4.isSelected());
+				s[72]=Boolean.toString(jav_5.isSelected());
+				s[73]=Boolean.toString(jav_6.isSelected());
+				s[74]=Boolean.toString(jav_7.isSelected());
+				s[75]=Boolean.toString(jav_8.isSelected());
+				s[76]=Boolean.toString(jav_9.isSelected());
+				s[77]=Boolean.toString(jav_10.isSelected());
+				//megjegyzes
+				s[78]=megj_1.getText();
+				s[79]=megj_2.getText();
+				s[80]=megj_3.getText();
+				s[81]=megj_4.getText();
+				s[82]=megj_5.getText();
+				s[83]=megj_6.getText();
+				s[84]=megj_7.getText();
+				s[85]=megj_8.getText();
+				s[86]=megj_9.getText();
+				s[87]=megj_10.getText();
+				s[88]=alvaz.getText();
+			//	System.out.println(s[40]);
+			//	s[19]=molajcsere.isSelected();
+				//s[20]
+				//s[21]	
+				keszfile = index.getI();
+				
+				if (keresett[0]==null) {
+					String[] irni=new String[11];
+					irni[1]= nev.getText();
+					irni[2]= cim.getText();
+					irni[3]= Telefon.getText();
+					irni[4]= vevokod.getText();
+					irni[5]= Rendszam.getText();
+					irni[6]= Tipus.getText();
+					irni[7]= evjarat.getText();
+					irni[8]= Motorszam.getText();
+					irni[9]= alvaz.getText();
+					irni[10]= hengeru.getText();
+					adatb.dbir.db_ir(irni);
+				}
+				 
+				//JSON Store data w/ index
+				
+				JSon execJS = new JSon(s);
+				try {
+					execJS.JStore();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				indes=index.getI();
+				sorszam.setText("sorsz\u00E1m:  "+indes);
+				 try {
+						one.Copy.copyFile(keszfile);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+			
+			
+				
+				//filebairas
+				try {
+					eKesz = ODT.output(keszfile);
+
+			//	indexSetI.setI();	// léptetni az indexet.
+				} catch (EncryptedDocumentException | InvalidFormatException | IOException e2) {
+					
+				}
+				//nyomtatas:
+				if( eKesz==1 )  
+					elkeszult.ePopup(keszfile);
+				
+				
+				indes=index.getI();
+				sorszam.setText("sorsz\u00E1m:  "+indes);
+				
+			}
+		});
+		nyomtatas.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				
+
+			}
+		});
+		nyomtatas.setBounds(546, 326, 92, 51);
+		contentPane.add(nyomtatas);
 		
 		
 		

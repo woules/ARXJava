@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import adatb.AdatbGUI;
 
 public class EarlierGUI extends JFrame {
 
