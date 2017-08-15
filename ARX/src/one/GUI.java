@@ -867,8 +867,8 @@ public class GUI extends JFrame {
 		contentPane.add(alvaz);
 		
 		
-		JButton kesz = new JButton("K\u00E9sz");
-		kesz.addActionListener(new ActionListener() {
+		JButton Kesz = new JButton("Ment\u00E9s");
+		Kesz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//adatlekérdezési struktúra:
 				
@@ -979,19 +979,15 @@ public class GUI extends JFrame {
 				try {
 					eKesz = ODT.output(keszfile);
 
-					indexSetI.setI();
+				//	indexSetI.setI();	// léptetni az indexet.
 				} catch (EncryptedDocumentException | InvalidFormatException | IOException e2) {
-					e2.printStackTrace();
+					
 				}
 				//nyomtatas:
-				if( eKesz==1 ) { 
-					int z= elkeszult.ePopup(keszfile);
-				    if(z==1) {
-			            	   
-			               }
-			                
-			            
-				}
+				if( eKesz==1 )  
+					elkeszult.ePopup(keszfile);
+				
+				
 				//nyomtatas
 			/*	try {
 					Print.p(keszfile);
@@ -1003,8 +999,8 @@ public class GUI extends JFrame {
 			}
 		});
 		
-		kesz.setBounds(505, 354, 89, 22);
-		contentPane.add(kesz);
+		Kesz.setBounds(505, 354, 89, 22);
+		contentPane.add(Kesz);
 		
 		Label label_43 = new Label("Alv\u00E1zsz\u00E1m");
 		label_43.setBounds(25, 216, 67, 22);
